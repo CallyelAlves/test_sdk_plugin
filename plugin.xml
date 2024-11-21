@@ -14,12 +14,7 @@
     </js-module>
     
     <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="MegaMatcherPlugin">
-                <param name="android-package" value="com.example.megmatcher"/>
-            </feature>
-        </config-file>
-        <source-file src="src/android/MegaMatcherPlugin.java" target-dir="src/com/example/megmatcher" />
+        <source-file src="src/android/MegaMatcherPlugin.java" />
     </platform>
     <platform name="ios">
         <source-file src="src/ios/MegaMatcherPlugin.swift" />

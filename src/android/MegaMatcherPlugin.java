@@ -1,5 +1,3 @@
-package com.example.megamatcherplugin;
-
 import com.neurotec.biometrics.NFace;
 import com.neurotec.biometrics.NBiometricClient;
 import org.apache.cordova.CordovaPlugin;
