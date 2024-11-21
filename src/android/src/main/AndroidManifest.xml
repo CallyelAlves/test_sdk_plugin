@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.neurotec.tutorials.megamatcherid"
+	android:versionCode="3"
+	android:versionName="2024.1.0.0">
+
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.CAMERA"/>
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_SETTINGS"
+		android:maxSdkVersion="22"/>
+
+	<uses-feature android:name="android.hardware.camera" />
+	<uses-feature android:name="android.hardware.microphone" />
+
+	<application
+		android:hardwareAccelerated="true"
+		android:allowBackup="true"
+		android:usesCleartextTraffic="true"
+		package="com.neurotec.tutorials.megamatcherid"
+		android:icon="@drawable/neurotechnology_icon"
+		android:label="@string/app_name"
+		android:theme="@android:style/Theme.Holo.Light">
+
+		<activity android:name=".MegaMatcherIdTutorials"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FaceChecks"
+			android:label="Face Checks"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FaceChecksFromImage"
+			android:label="Face Checks From Image"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FaceCreateTemplate"
+			android:label="Face Create Template"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FaceImportImage"
+			android:label="Face Import Image"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FaceImportNTemplate"
+			android:label="Face Import NTemplate"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FaceRemoteVerify"
+			android:label="Face Remote Verify"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FaceVerify"
+			android:label="Face Verify"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FaceVerifyAgainstNTemplate"
+			android:label="Face Verify against NTemplate"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".VoiceCreateTemplate"
+			android:label="Voice Create template"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".VoiceVerify"
+			android:label="Voice Verify"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".VoiceRemoteVerify"
+			android:label="Voice Remote Verify"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FingerChecksFromImage"
+			android:label="Finger Checks From Image"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FingerImportImage"
+			android:label="Finger Import Image"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FingerChecks"
+			android:label="Finger Checks"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FingerCreateTemplate"
+			android:label="Finger Create Template"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".FingerVerify"
+			android:label="Finger Verify"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="com.neurotec.tutorials.megamatcherid.CATEGORY_NEUROTEC_TUTORIAL" />
+			</intent-filter>
+		</activity>
+
+	</application>
+
+</manifest>

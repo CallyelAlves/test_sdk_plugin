@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Image source: " />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/source_camera_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Camera" />
+
+        <RadioButton
+            android:id="@+id/source_scanner_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Scanner" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/tutorials_import_image_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Import Image" />
+
+    <TextView
+        android:id="@+id/finger_result"
+        android:layout_width="match_parent"
+        android:layout_height="438dp" />
+</LinearLayout>

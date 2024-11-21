@@ -1,0 +1,146 @@
+description = "MegaMatcherID Sample"
+
+apply plugin: 'com.android.application'
+
+def productRootDir = "../../../.."
+def productBinDir = new File(productRootDir, "Bin")
+def productBinAndroidDir = new File(productBinDir, "Android")
+def productLibAndroidDir = new File(productRootDir, "Lib/Android")
+if (project.hasProperty("nativeLibraryPath")) {
+	productLibAndroidDir = new File(project.getProperty("nativeLibraryPath"))
+}
+def archUsed = "arm64-v8a,armeabi-v7a"
+
+def usedNdfList = ["MegaMatcherId.ndf",
+					"MegaMatcherIdIcao.ndf",
+					"MegaMatcherIdVoices.ndf",
+					"MegaMatcherIdFingers.ndf",
+					"MegaMatcherIdFingersScanner.ndf"]
+
+def nativeLibsUsed = ["libMegaMatcherIdClient.so",
+				  		"libopenblas.so"]
+
+buildscript {
+	System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true'
+	repositories {
+		google()
+		jcenter()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:4.1.2'
+	}
+}
+
+android {
+	compileSdkVersion 31
+
+	dexOptions {
+		javaMaxHeapSize "4g"
+	}
+
+	defaultConfig {
+		minSdkVersion 21
+		targetSdkVersion 31
+
+		ndk {
+			abiFilters 'armeabi-v7a', 'arm64-v8a'
+		}
+	}
+	packagingOptions {
+		exclude "META-INF/LE-832C0.RSA"
+	}
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
+	lintOptions {
+		abortOnError false
+	}
+}
+
+gradle.projectsEvaluated {
+	tasks.withType(JavaCompile) {
+		options.compilerArgs << "-Xlint:deprecation"
+	}
+}
+
+task deleteTemporaryFiles(type: Delete) {
+	for (String file : usedNdfList) {
+		delete "${android.sourceSets.main.assets.srcDirs[0]}/data/${file}.jet"
+	}
+	delete "${android.sourceSets.main.jniLibs.srcDirs[0]}"
+}
+
+clean {
+	logger.info(productBinAndroidDir.toString())
+	delete fileTree(dir: productBinAndroidDir , include: "${"mega-matcher-id-sample"}*.*")
+}
+
+task prepareNdfFiles(type: Copy) {
+	from "${productBinDir}/Data"
+	includes = usedNdfList
+	rename { String fileName ->
+		fileName.replace('.ndf', '.ndf.jet')
+	}
+	into "${android.sourceSets.main.assets.srcDirs[0]}/data"
+}
+
+int counter = 1
+archUsed.split(',').each {
+	String srcDir = "${productLibAndroidDir}/${it}"
+	String dstDir = "${android.sourceSets.main.jniLibs.srcDirs[0]}/${it}"
+	task "prepareNativeLibs$counter"(type: Copy) {
+		from srcDir
+		for (String lib : nativeLibsUsed) {
+			include lib
+		}
+		into dstDir
+		dependsOn(prepareNdfFiles)
+	}
+	tasks.preBuild.dependsOn("prepareNativeLibs$counter")
+	counter++
+}
+
+task publishApk(type: Copy) {
+	from "${project.buildDir}/outputs/apk/debug"
+	include "${project.archivesBaseName}-debug.apk"
+	rename "${project.archivesBaseName}-debug.apk", "${project.archivesBaseName}.apk"
+	into productBinAndroidDir
+}
+
+clean.dependsOn(deleteTemporaryFiles)
+prepareNdfFiles.dependsOn(clean)
+build.finalizedBy(publishApk)
+
+dependencies {
+	implementation ":neurotec-mega-matcher-id-client-android"
+	implementation 'net.java.dev.jna:jna:5.11.0@aar'
+	implementation ":mega-matcher-id-rest-client"
+
+//  ================================================
+//  Uncomment to build Remote Verification on MMID Web (also uncomment in FaceRemoteVerification.java and VoiceRemoteVerificaiton.java)
+//  ================================================
+//	 implementation ":mega-matcher-id-management-client-user"
+
+	api "com.android.support:support-v4:27.1.1"
+
+	// rest dependencies
+	api 'com.google.code.findbugs:jsr305:3.0.2'
+	api 'com.squareup.okhttp3:okhttp:4.10.0'
+	api 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+	api 'com.google.code.gson:gson:2.9.1'
+	api 'io.gsonfire:gson-fire:1.8.5'
+	api 'org.apache.commons:commons-lang3:3.12.0'
+	api 'jakarta.annotation:jakarta.annotation-api:1.3.5'
+	api 'org.openapitools:jackson-databind-nullable:0.2.6'
+
+	implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+}
+
+repositories {
+	google()
+	mavenCentral()
+	flatDir {
+		dirs "${productBinAndroidDir}/"
+	}
+}
