@@ -10,7 +10,7 @@
     <repo>https://github.com/CallyelAlves/test_sdk_plugin.git</repo>
 
     <js-module src="www/megaMatcherPlugin.js" name="MegaMatcherPlugin">
-        <clobbers target="MegaMatcherPlugin" />
+        <clobbers target="megaMatcherPlugin" />
     </js-module>
     
     <platform name="android">
