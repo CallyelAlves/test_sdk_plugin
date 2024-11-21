@@ -7,6 +7,7 @@
     <description>Plugin personalizado para integração com o SDK MegaMatcher</description>
     <license>MIT</license>
     <keywords>cordova, megmatcher, biometrics, recognition</keywords>
+    <repo>https://github.com/CallyelAlves/test_sdk_plugin.git</repo>
 
     <js-module src="www/megaMatcherPlugin.js" name="MegaMatcherPlugin">
         <clobbers target="MegaMatcherPlugin" />
