@@ -1,7 +1,7 @@
-module.exports = {
-
-    get: function (success, failure) {
-        cordova.exec(success, failure, "MegaMatcherPlugin", "get", []);
+var megaMatcherPlugin = {
+    recognizeFace: function(successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "MegaMatcherPlugin", "recognizeFace", []);
     }
+};
 
-}
+module.exports = megaMatcherPlugin;
