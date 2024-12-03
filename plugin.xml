@@ -14,7 +14,7 @@
     </js-module>
     
     <platform name="android">
-        <source-file src="src/android/MegaMatcherPlugin.java" target-dir="src/com/neurotec/tutorials/megamatcherid"/>
+        <source-file src="src/android/MegaMatcherPlugin.java" target-dir="src/com/example/megamatcher"/>
     </platform>
     <platform name="ios">
         <source-file src="src/ios/MegaMatcherPlugin.swift" />
