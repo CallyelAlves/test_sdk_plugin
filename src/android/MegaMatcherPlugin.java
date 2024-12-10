@@ -23,7 +23,7 @@ import com.neurotec.tutorials.utils.BaseActivity;
 import java.io.IOException;
 import java.util.Arrays;
 
-public final class FaceChecks extends BaseActivity {
+public final class MegaMatcherPlugin extends BaseActivity {
 
     private TextView mScoreValue;
     private TextView mActionValue;
