@@ -18,8 +18,10 @@
         <source-file src="src/android/src/main/java/com/neurotec/tutorials/utils/BaseActivity.java" target-dir="src/com/neurotec/tutorials/utils"/>
         <source-file src="Bin/Android/neurotec-mega-matcher-id-client-android.jar" target-dir="libs/" />
         <source-file src="Bin/Android/mega-matcher-id-rest-client.jar" target-dir="libs/" />
-        <framework src="libs/neurotec-mega-matcher-id-client-android.jar" custom="true" />
-        <framework src="libs/mega-matcher-id-rest-client.jar" custom="true" />
+        <!-- <framework src="libs/neurotec-mega-matcher-id-client-android.jar" custom="true" />
+        <framework src="libs/mega-matcher-id-rest-client.jar" custom="true" /> -->
+        <lib-file src="plugins/cordova-plugin-megamatcher/Bin/Android/neurotec-mega-matcher-id-client-android.jar" />
+        <lib-file src="plugins/cordova-plugin-megamatcher/Bin/Android/mega-matcher-id-rest-client.jar" />
     </platform>
     <platform name="ios">
         <source-file src="src/ios/MegaMatcherPlugin.swift" />
