@@ -14,7 +14,7 @@
     </js-module>
     
     <platform name="android">
-        <source-file src="src/android/src/main/java/com/neurotec/tutorials/megamatcherid/FaceChecks.java" target-dir="src/com/neurotec/tutorials/megamatcherid"/>
+        <source-file src="src/android/MegaMatcherPlugin.java" target-dir="src/com/neurotec/tutorials/megamatcherid"/>
         <source-file src="src/android/src/main/java/com/neurotec/tutorials/utils/BaseActivity.java" target-dir="src/com/neurotec/tutorials/utils"/>
         <source-file src="src/android/src/main/java/com/neurotec/tutorials/utils/ToastManager.java" target-dir="src/com/neurotec/tutorials/utils"/>
         <source-file src="Bin/Android/neurotec-mega-matcher-id-client-android.jar" target-dir="libs/" />

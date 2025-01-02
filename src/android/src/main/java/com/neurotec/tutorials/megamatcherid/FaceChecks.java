@@ -82,7 +82,7 @@ public final class FaceChecks extends BaseActivity {
     }
 
     // Main activity function.
-    private void checks() {
+    public void checks() {
         new Thread(() -> {
             try {
                 // Get Liveness Mode and ICAO Compliance.
