@@ -40,7 +40,7 @@ public final class FaceChecks extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // Setting up activity
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.face_checks);
+        // setContentView(R.layout.face_checks);
 
         /*
         Initialize client with the Application ID that has to match the Internet License or Dongle used.
@@ -54,19 +54,19 @@ public final class FaceChecks extends BaseActivity {
             livenessModes[i] = NLivenessMode.get(i).name();
         }
 
-        mLivenessModeSpinner = (Spinner) findViewById(R.id.liveness_mode_spinner);
+        // mLivenessModeSpinner = (Spinner) findViewById(R.id.liveness_mode_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, livenessModes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mLivenessModeSpinner.setAdapter(adapter);
 
-        mScoreValue = findViewById(R.id.liveness_score_label);
-        mActionValue = findViewById(R.id.liveness_action_label);
-        mIcaoValue = findViewById(R.id.icao_warnings_label);
+        // mScoreValue = findViewById(R.id.liveness_score_label);
+        // mActionValue = findViewById(R.id.liveness_action_label);
+        // mIcaoValue = findViewById(R.id.icao_warnings_label);
 
-        mIcaoTrueButton = findViewById(R.id.icao_true_button);
+        // mIcaoTrueButton = findViewById(R.id.icao_true_button);
 
-        mStartChecksButton = (Button) findViewById(R.id.start_checks_button);
+        // mStartChecksButton = (Button) findViewById(R.id.start_checks_button);
         mStartChecksButton.setOnClickListener(v -> checks());
     }
 
