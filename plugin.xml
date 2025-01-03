@@ -14,14 +14,18 @@
     </js-module>
     
     <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="MegaMatcherPlugin">
+                <param name="android-package" value="com.neurotec.tutorials.megamatcherid.MegaMatcherPlugin" />
+            </feature>
+        </config-file>
         <source-file src="src/android/MegaMatcherPlugin.java" target-dir="src/com/neurotec/tutorials/megamatcherid"/>
         <source-file src="src/android/src/main/java/com/neurotec/tutorials/megamatcherid/FaceChecks.java" target-dir="src/com/neurotec/tutorials/megamatcherid"/>
         <source-file src="src/android/src/main/java/com/neurotec/tutorials/utils/BaseActivity.java" target-dir="src/com/neurotec/tutorials/utils"/>
         <source-file src="src/android/src/main/java/com/neurotec/tutorials/utils/ToastManager.java" target-dir="src/com/neurotec/tutorials/utils"/>
         <source-file src="Bin/Android/neurotec-mega-matcher-id-client-android.jar" target-dir="libs/" />
         <source-file src="Bin/Android/mega-matcher-id-rest-client.jar" target-dir="libs/" />
-        <!-- <framework src="libs/neurotec-mega-matcher-id-client-android.jar" custom="true" />
-        <framework src="libs/mega-matcher-id-rest-client.jar" custom="true" /> -->
+
         <lib-file src="Bin/Android/neurotec-mega-matcher-id-client-android.jar" />
         <lib-file src="Bin/Android/mega-matcher-id-rest-client.jar" />
     </platform>
