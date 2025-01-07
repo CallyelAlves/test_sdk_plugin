@@ -16,6 +16,8 @@ import androidx.core.app.ActivityCompat;
 public class MegaMatcherPlugin extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        System.out.println("recognizeFace");
+        callbackContext.success("Face checks initiated successfully");
         if (action.equals("recognizeFace")) {
             this.checkPermissions();
             this.startFaceChecks(callbackContext);
