@@ -85,6 +85,9 @@ public final class FaceChecks extends BaseActivity {
     public void checks() {
         new Thread(() -> {
             try {
+                System.out.println("Camera initialized successfully");
+                System.out.println("Available cameras: " + Arrays.toString(mMMID.getAvailableCameraNames()));
+
                 // Get Liveness Mode and ICAO Compliance.
                 NLivenessMode livenessMode = getLivenessMode();
                 Boolean icao = getIcaoCheck();
