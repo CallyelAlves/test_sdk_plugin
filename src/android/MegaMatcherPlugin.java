@@ -21,7 +21,7 @@ public class MegaMatcherPlugin extends CordovaPlugin {
         System.out.println("recognizeFace");
         callbackContext.success("Face checks initiated successfully");
         if (action.equals("recognizeFace")) {
-            this.checkPermissions();
+            // this.checkPermissions();
             this.startFaceChecks(callbackContext);
             return true;
         }
@@ -32,8 +32,11 @@ public class MegaMatcherPlugin extends CordovaPlugin {
         try {
             // this.configureModelPath();
             Log.d("MegaMatcherPlugin", "Initializing FaceChecks...");
-            FaceChecks faceChecks = new FaceChecks();
-            faceChecks.checks();
+            // FaceChecks faceChecks = new FaceChecks();
+            // faceChecks.checks();
+
+            FaceChecksFromImage faceChecks = new FaceChecksFromImage();
+            faceChecks.openFile(3, "image/*");
 
             Log.d("MegaMatcherPlugin", "FaceChecks initialized successfully");
             callbackContext.success("Face checks initiated successfully");
