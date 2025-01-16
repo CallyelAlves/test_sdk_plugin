@@ -1,3 +1,5 @@
+package com.neurotec.tutorials.megamatcherid;
+
 import com.neurotec.tutorials.megamatcherid.FaceChecks;
 
 import android.util.Log;
@@ -28,6 +30,7 @@ public class MegaMatcherPlugin extends CordovaPlugin {
 
     private void startFaceChecks(CallbackContext callbackContext) {
         try {
+            // this.configureModelPath();
             Log.d("MegaMatcherPlugin", "Initializing FaceChecks...");
             FaceChecks faceChecks = new FaceChecks();
             faceChecks.checks();
@@ -49,4 +52,16 @@ public class MegaMatcherPlugin extends CordovaPlugin {
             }
         }
     }
+
+    private void configureModelPath() {
+        try {
+            // Configura o caminho para os arquivos de modelo nos assets
+            String modelPath = "file:///android_asset/MegaMatcherIdFaces.ndf";
+            mMMID.setModelPath(modelPath);
+            Log.d("MegaMatcherPlugin", "Model path set to: " + modelPath);
+        } catch (Exception e) {
+            Log.e("MegaMatcherPlugin", "Failed to configure model path", e);
+        }
+    }
+
 }
