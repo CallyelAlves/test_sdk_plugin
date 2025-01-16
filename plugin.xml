@@ -26,8 +26,8 @@
         <source-file src="Bin/Android/neurotec-mega-matcher-id-client-android.jar" target-dir="libs/" />
         <source-file src="Bin/Android/mega-matcher-id-rest-client.jar" target-dir="libs/" />
 
-        <source-file src="assets/data/MegaMatcherIdFaces.ndf" target="src/main/assets/MegaMatcherIdFaces.ndf" />
-        <source-file src="assets/data/MegaMatcherIdFacesIcao.ndf" target="src/main/assets/MegaMatcherIdFacesIcao.ndf" />
+        <source-file src="assets/data/MegaMatcherIdFaces.ndf" target-dir="src/main/assets/MegaMatcherIdFaces.ndf" />
+        <source-file src="assets/data/MegaMatcherIdFacesIcao.ndf" target-dir="src/main/assets/MegaMatcherIdFacesIcao.ndf" />
 
         <lib-file src="Bin/Android/neurotec-mega-matcher-id-client-android.jar" />
         <lib-file src="Bin/Android/mega-matcher-id-rest-client.jar" />
