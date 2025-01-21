@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioButton;
 
+import android.util.Base64;
+
 import com.neurotec.mega.matcher.id.client.MegaMatcherIdClient;
 import com.neurotec.mega.matcher.id.client.NIcaoWarnings;
 import com.neurotec.mega.matcher.id.client.NOperationResult;
@@ -18,6 +20,7 @@ import com.neurotec.tutorials.utils.BaseActivity;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import org.apache.cordova.CallbackContext;
 
 public final class FaceChecksFromImage extends BaseActivity {
 
@@ -33,7 +36,7 @@ public final class FaceChecksFromImage extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // Setting up activity
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.face_checks_from_image);
+        setContentView(2131296285);
 
         /*
         Initialize client with the Application ID that has to match the Internet License or Dongle used.
@@ -42,9 +45,9 @@ public final class FaceChecksFromImage extends BaseActivity {
         mMMID = new MegaMatcherIdClient(1);
 
         // Setting up activity components
-        mIcaoTrueButton = findViewById(R.id.icao_true_button);
-        mLivenessTrueButton = findViewById(R.id.liveness_detection_true_button);
-        Button checkFromImageButton = findViewById(R.id.check_from_image_button);
+        mIcaoTrueButton = findViewById(2131165296);
+        mLivenessTrueButton = findViewById(2131165319);
+        Button checkFromImageButton = findViewById(2131165243);
         checkFromImageButton.setOnClickListener(v -> openFile(IMAGE_REQUEST_CODE, "image/*"));
     }
 
@@ -54,7 +57,7 @@ public final class FaceChecksFromImage extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == IMAGE_REQUEST_CODE) {
-                checksFromImage(uriToBytes(data.getData()));
+                // checksFromImage(uriToBytes(data.getData()));
             }
         }
     }
@@ -71,7 +74,7 @@ public final class FaceChecksFromImage extends BaseActivity {
     }
 
     // Helper function to open image.
-    private void openFile(int requestCode, String mime) {
+    public void openFile(int requestCode, String mime) {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType(mime);
@@ -79,7 +82,7 @@ public final class FaceChecksFromImage extends BaseActivity {
     }
 
     // Helper function to get bytes from uri.
-    private byte[] uriToBytes(Uri uri) {
+    public byte[] uriToBytes(Uri uri) {
         byte[] buf = new byte[0];
 
         try (InputStream inputStream = getContentResolver().openInputStream(uri);
@@ -98,9 +101,10 @@ public final class FaceChecksFromImage extends BaseActivity {
     }
 
     // Main activity function.
-    private void checksFromImage(byte[] imageBytes) {
+    public void checksFromImage(byte[] imageBytes, CallbackContext callbackContext) {
         new Thread(() -> {
             try {
+                callbackContext.success(Base64.encodeToString(imageBytes, Base64.DEFAULT));
                 // Setting up client for communication with the licensing server.
                 ApiClient client = new ApiClient();
                 client.setBasePath("http://licensing.megamatcherid.online/rs");
@@ -137,6 +141,8 @@ public final class FaceChecksFromImage extends BaseActivity {
                     showToast(failedMsg);
                     return;
                 }
+
+                // callbackContext.success(String.format("Success with %s quality, Estimated age: %d", result.getQuality(), result.getAge()));
 
                 // Get quality and age from result.
                 showToast(String.format("Success with %s quality, Estimated age: %d", result.getQuality(), result.getAge()));

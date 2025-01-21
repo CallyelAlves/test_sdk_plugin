@@ -1,10 +1,12 @@
 package com.neurotec.tutorials.megamatcherid;
 
-import com.neurotec.tutorials.megamatcherid.FaceChecks;
+import org.apache.cordova.CallbackContext;
+import com.neurotec.tutorials.megamatcherid.FaceChecksFromImage;
 
 import android.util.Log;
+import android.util.Base64;
+import android.net.Uri;
 
-import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,27 +21,28 @@ public class MegaMatcherPlugin extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         System.out.println("recognizeFace");
-        callbackContext.success("Face checks initiated successfully");
         if (action.equals("recognizeFace")) {
+            callbackContext.success("Face checks initiated successfully");
             // this.checkPermissions();
-            this.startFaceChecks(callbackContext);
+            String base64Image = args.getString(0);
+            this.startFaceChecks(base64Image, callbackContext);
             return true;
         }
         return false;
     }
 
-    private void startFaceChecks(CallbackContext callbackContext) {
+    private void startFaceChecks(String image, CallbackContext callbackContext) {
         try {
             // this.configureModelPath();
             Log.d("MegaMatcherPlugin", "Initializing FaceChecks...");
             // FaceChecks faceChecks = new FaceChecks();
             // faceChecks.checks();
-
+            Uri imageUri = Uri.parse(image);
             FaceChecksFromImage faceChecks = new FaceChecksFromImage();
-            faceChecks.openFile(3, "image/*");
+            faceChecks.checksFromImage(faceChecks.uriToBytes(imageUri), callbackContext);
 
             Log.d("MegaMatcherPlugin", "FaceChecks initialized successfully");
-            callbackContext.success("Face checks initiated successfully");
+            // callbackContext.success("Face checks initiated successfully");
         } catch (Exception e) {
             Log.e("MegaMatcherPlugin", "Error initiating face checks: " + e.getMessage(), e);
             callbackContext.error("Error initiating face checks: " + e.getMessage());
@@ -59,9 +62,9 @@ public class MegaMatcherPlugin extends CordovaPlugin {
     private void configureModelPath() {
         try {
             // Configura o caminho para os arquivos de modelo nos assets
-            String modelPath = "file:///android_asset/MegaMatcherIdFaces.ndf";
-            mMMID.setModelPath(modelPath);
-            Log.d("MegaMatcherPlugin", "Model path set to: " + modelPath);
+            // String modelPath = "file:///android_asset/MegaMatcherIdFaces.ndf";
+            // mMMID.setModelPath(modelPath);
+            // Log.d("MegaMatcherPlugin", "Model path set to: " + modelPath);
         } catch (Exception e) {
             Log.e("MegaMatcherPlugin", "Failed to configure model path", e);
         }
