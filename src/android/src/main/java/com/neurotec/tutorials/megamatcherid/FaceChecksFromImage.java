@@ -104,7 +104,7 @@ public final class FaceChecksFromImage extends BaseActivity {
     public void checksFromImage(byte[] imageBytes, CallbackContext callbackContext) {
         new Thread(() -> {
             try {
-                callbackContext.success(Base64.encodeToString(imageBytes, Base64.DEFAULT));
+                // callbackContext.success(Base64.encodeToString(imageBytes, Base64.DEFAULT));
                 // Setting up client for communication with the licensing server.
                 ApiClient client = new ApiClient();
                 client.setBasePath("http://licensing.megamatcherid.online/rs");
@@ -142,7 +142,7 @@ public final class FaceChecksFromImage extends BaseActivity {
                     return;
                 }
 
-                // callbackContext.success(String.format("Success with %s quality, Estimated age: %d", result.getQuality(), result.getAge()));
+                callbackContext.success(String.format("Success with %s quality, Estimated age: %d", result.getQuality(), result.getAge()));
 
                 // Get quality and age from result.
                 showToast(String.format("Success with %s quality, Estimated age: %d", result.getQuality(), result.getAge()));

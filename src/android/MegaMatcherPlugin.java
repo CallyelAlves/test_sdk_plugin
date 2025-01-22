@@ -22,7 +22,7 @@ public class MegaMatcherPlugin extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         System.out.println("recognizeFace");
         if (action.equals("recognizeFace")) {
-            callbackContext.success("Face checks initiated successfully");
+            // callbackContext.success("Face checks initiated successfully");
             // this.checkPermissions();
             String base64Image = args.getString(0);
             this.startFaceChecks(base64Image, callbackContext);
@@ -37,9 +37,13 @@ public class MegaMatcherPlugin extends CordovaPlugin {
             Log.d("MegaMatcherPlugin", "Initializing FaceChecks...");
             // FaceChecks faceChecks = new FaceChecks();
             // faceChecks.checks();
-            Uri imageUri = Uri.parse(image);
+            // Uri imageUri = Uri.parse(image);
+            // FaceChecksFromImage faceChecks = new FaceChecksFromImage();
+            // faceChecks.checksFromImage(faceChecks.uriToBytes(imageUri), callbackContext);
+            
+            byte[] imageBytes = Base64.decode(image.split(",")[1], Base64.DEFAULT);
             FaceChecksFromImage faceChecks = new FaceChecksFromImage();
-            faceChecks.checksFromImage(faceChecks.uriToBytes(imageUri), callbackContext);
+            faceChecks.checksFromImage(imageBytes, callbackContext);
 
             Log.d("MegaMatcherPlugin", "FaceChecks initialized successfully");
             // callbackContext.success("Face checks initiated successfully");
